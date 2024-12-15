@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reducción de Papel</title>
+    <link rel="stylesheet" href="estilo1.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="content">
+        <div id="startContainer">
+            <h1>Esta es una página de apoyo para la materia:Estructura de datos</h1>
+            <button id="comenzarBtn">Comenzar</button>
+        </div>
+        <div id="menuContainer" class="hidden">
+            <h2>Selecciona una opción:</h2>
+            <div class="button-group">
+                <button class="menuButton" onclick="navigateTo('unidad1.html')">Unidad 1</button>
+                <button class="menuButton" onclick="navigateTo('unidad2.html')">Unidad 2</button>
+                <button class="menuButton" onclick="navigateTo('unidad3.html')">Unidad 3</button>
+                <button class="menuButton" onclick="navigateTo('unidad4.html')">Unidad 4</button>
+                <button class="menuButton" onclick="navigateTo('unidad5.html')">Unidad 5</button>
+                <button class="menuButton" onclick="navigateTo('unidad6.html')">Unidad 6</button>
+                <button class="menuButton" onclick="navigateTo('material_apoyo.html')">Material de apoyo</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingSpinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        const comenzarBtn = document.getElementById('comenzarBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const startContainer = document.getElementById('startContainer');
+        const menuContainer = document.getElementById('menuContainer');
+
+        comenzarBtn.onclick = function() {
+            loadingSpinner.style.display = "block";
+            setTimeout(function() {
+                loadingSpinner.style.display = "none";
+                startContainer.classList.add('hidden');
+                menuContainer.classList.remove('hidden');
+            }, 2000); 
+        };
+
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            color: rgb(255, 255, 255);
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-50deg, #37b9f1, #9b59b6, #f2bde3, #d2b4de);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #startContainer {
+            text-align: center;
+            color: rgb(244, 244, 246);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #startContainer h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        #comenzarBtn {
+            background-color: #c253ee;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #comenzarBtn:hover {
+            background-color: #accdf2;
+            transform: scale(1.1);
+        }
+
+        #menuContainer {
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .menuButton {
+            background-color: #c253ee;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .menuButton:hover {
+            background-color: #accdf2;
+            transform: scale(1.1);
+        }
+
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid #ffffff; /* Fondo del spinner */
+            border-top: 6px solid #000000; /* Color del spinner */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    </style>
+</body>
+</html>
